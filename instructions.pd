@@ -1,6 +1,4 @@
-# __POSTGRESQL / SQLALCHEMY / PSYCOPG2 __
-
-## __Error fix due to Gitpod change__
+# __Error fix due to Gitpod change__
 If you get the following error after typing psql in the terminal:
 
 psql: error: could not connect to server: No such file or directory
@@ -11,7 +9,7 @@ set_pg
 
 And then try the psql command again
 
-__You will need to do this each time you return to your Gitpod workspace for the Database Management Systems videos.__
+You will need to do this each time you return to your Gitpod workspace for the Database Management Systems videos.
 
 
 
@@ -28,7 +26,7 @@ wget https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDa
 
     1. To view, or list, any databases in our environment, we can type \l.
 
-    2. to create a new database , type , CREATE DATABASE chinook;
+    2. to cvreate a new database , type , CREATE DATABASE chinook;
 
     3.  the standard way to separate each SQL statement is by adding a semicolon at the end of the statement, since you can theoretically
     combine multiple commands in a single entry.
@@ -126,34 +124,12 @@ wget https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDa
 # __sql-psycopg2.py__
     - instructions-psql-psycopg2.py
        - this file contains the entry level instructions to execute basic queries on a DB
-       - see the sql-psycopg2.py file for further instructions and notes
 
-# __instructions-sqlAlchemy.py__
-    - instructions-sqlAlchemy.py for installing sqlAlchemy
+# __sql-psycopg2.py__
+    - instructions-sqlAlchemy.py
+       - this file contains the entry level instructions to execute basic queries on a DB
 
-# __sql-expression.py__
-       - this file contains the middle level instructions to execute queries on a DB using sql statements written in a more pythonic way.
-       - see the sql-expression.py file for further instructions and notes
-# __sql-orm.py__
-       - this file contains the top level instructions to execute queries on a DB using python classes instead of using tables and connections.
-       - see the sql-orm.py file for further instructions and notes
 
-.
-.
-.
-.
-.
-.
-.
-# __DBMS CODE ALONG__
-.
-.
-.
-# __CRUD__
-  - Create
-  - Read
-  - Update
-  - Delete
 
-## __Create and Read
+
 
