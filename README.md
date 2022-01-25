@@ -23,6 +23,25 @@ Chinook Database SQL
 wget https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_PostgreSql.sql
 
 
+# __initial setup__
+To launch the Postgres CLI, we can simply type "psql" and hit enter.
+To view, or list, any databases in our environment, we can type \l.
+By default, the Postgres CLI comes with 3 databases out of the box; 'postgres', 'template0', and 'template1'.
+Instead of using any of these default databases, let's create a new database for our Chinook lessons.
+CREATE DATABASE chinook; Don't forget the semicolon at the end of the command,
+which is the standard way to separate each SQL statement, since you can theoretically
+combine multiple commands in a single entry.
+If you've hit enter without adding the semicolon, it will assume you're wanting to add additional
+commands, so just add your semicolon now, and hit enter.
+We now have a fourth database, called Chinook, which is currently empty.
+If we needed to switch between databases, we can simply type \c followed by the name
+of the database we want to switch over to.
+\c postgres - now we're on the default postgres database.
+\c chinook - and now we're connected to our new database.
+The \c stands for 'connect' in case you're wondering, telling it which database to connect to.
+Finally, while we're connected to our new chinook database, we need to initialize or
+install the downloaded sample Chinook PostgreSQL database.
+\i Chinook_PostgreSql.sql The \i generally means include, integrate, install, or initialize.
 -
    # __instructions and commands__
 
