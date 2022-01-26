@@ -1,6 +1,8 @@
 # firstly import the relevant elements of sqlAlchemy - we copied the first lines from sql-orm.py
 # see all notes in sql orm as they are relevant to a lot of this file also
 
+# IMPORTANT --- YOU CANNOT ADD COLUMNS TO AN EXISTING DATABASE
+
 from sqlalchemy import (
     create_engine, Column, Integer, String
 )
@@ -26,14 +28,14 @@ base = declarative_base()
 """
 
 # create a class-based model for the "programmer" table
-class Programmer(base):
-    __tablename__ = "Programmer"
+class Drifter(base):
+    __tablename__ = "Drifters"
     id = Column(Integer, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    gender = Column(String)
-    nationality = Column(String)
-    famous_for = Column(String)
+    make = Column(String)
+    model = Column(String)
+    engine = Column(String)
+    race_team = Column(String)
+    country = Column(String)
 
  # instead of conecting to the database directly, we will ask for a session
  # create a new instance of sessionmaker,  then point to our engine (the db), make sure you use capital S for class name
@@ -53,70 +55,70 @@ base.metadata.create_all(db)
 
 
 # creating records on our programmer table
-ada_lovelace = Programmer(
-    first_name = 'Ada',
-    last_name = 'Lovelace',
-    gender = 'F',
-    nationality = 'Brittish',
-    famous_for = 'First Programmer'
+James_Deane = Drifter(
+    make = "NISSAN",
+    model = "SILVIA S14.5",
+    engine = "2JZ-GTE",
+    race_team = "AIMOL RACING",
+    country = "IRELAND"
 )
 
-alan_turing = Programmer(
-    first_name = 'Alan',
-    last_name = 'Turing',
-    gender = 'M',
-    nationality = 'Brittish',
-    famous_for = 'Modern Computing'
+Gotcha = Drifter(
+    make = "NISSAN",
+    model = "SILVIA S15",
+    engine = "SR20DET",
+    race_team = "NGK",
+    country = "RUSSIA"
 )
-grace_hopper = Programmer(
-    first_name = 'Grace',
-    last_name = 'Hopper',
-    gender = 'F',
-    nationality = 'American',
-    famous_for = 'COBOL Language'
+Ken_Nomura = Drifter(
+    make = "Nissan",
+    model = "Blitz D1 Spec ER34",
+    engine = "RB26DETT",
+    race_team = "URAS",
+    country = "JAPAN"
 )
-margaret_hamilton = Programmer(
-    first_name = 'Margaret',
-    last_name = 'Hamilton',
-    gender = 'F',
-    nationality = 'American',
-    famous_for = 'Apollo 11'
+Keichi_Tsuchiya = Drifter(
+    make = "TOYOTA",
+    model = "AE86",
+    engine = "4AGE",
+    race_team = "N/A",
+    country = "JAPAN"
 )
-bill_gates = Programmer(
-    first_name = 'Bill',
-    last_name = 'Gates',
-    gender = 'M',
-    nationality = 'American',
-    famous_for = 'Microsoft founder'
+Vaughn_Gitten_Jr = Drifter(
+    make = "FORD",
+    model = "MUSTANG",
+    engine = "FORD BIG BLOCK",
+    race_team = "MONSTER",
+    country = "USA"
 )
-tim_berners_lee = Programmer(
-    first_name = 'Tim',
-    last_name = 'Berners Lee',
-    gender = 'M',
-    nationality = 'Brittish',
-    famous_for = 'World Wide Web'
+Darren_Mc_Namara = Drifter(
+    make = "Nissan",
+    model = "Silvia S13 SIL80",
+    engine = "NASCAR V8",
+    race_team = "GROUP D",
+    country = "IRELAND"
 )
-brian_stritch = Programmer(
-    first_name = 'Brian',
-    last_name = 'Stritch',
-    gender = 'M',
-    nationality = 'Irish',
-    famous_for = 'best CI student 2022'
+Max_Orido = Drifter(
+    make = "TOYOTA",
+    model = "GT86",
+    engine = "2JZ-GTE",
+    race_team = "HKS",
+    country = "JAPAN"
 )
 
 
 
 # add each instance of our programmers to our session
-"""
-# session.add(ada_lovelace)
-# session.add(alan_turing)
-# session.add(grace_hopper)
-# session.add(margaret_hamilton)
-# session.add(bill_gates)
-# session.add(tim_berners_lee)
-# session.add(brian_stritch)
-"""
 
+# session.add(James_Deane)
+# session.add(Gotcha)
+# session.add(Ken_Nomura)
+# session.add(Keichi_Tsuchiya)
+# session.add(Vaughn_Gitten_Jr)
+# session.add(Darren_Mc_Namara)
+# session.add(Max_Orido)
+
+# session.commit()
 
 """
 *****************       UPDATE         ********************************
@@ -189,12 +191,16 @@ the query list, even though it'll only find a single record using that ID.
 
 # to delete multiple records
 
+
+    
+
 """
 To delete multiple records you would:
 
-programmers = session.query(Programmer)
-for programmer in programmers:
-    session.delete(programmer)
+drifters = session.query(Drifter)
+for drifter in drifters:
+    print('deleted')
+    session.delete(drifter)
     session.commit()
 
 
@@ -209,13 +215,15 @@ use defensive programming to confirm deletion first.
 *****************       READ         ********************************
 """
 # query the database to find all engineers
-programmers = session.query(Programmer)
-for programmer in programmers:
+drifters = session.query(Drifter)
+for drifter in drifters:
     print(
-        programmer.id,
-        programmer.first_name + " " + programmer.last_name,
-        programmer.gender,
-        programmer.nationality,
-        programmer.famous_for,
+        drifter.id,
+        #drifter.name,
+        drifter.make,
+        drifter.model,
+        drifter.engine,
+        drifter.race_team,
+        drifter.country,        
         sep = " | " # charachter used for seperating each value printed
     )
